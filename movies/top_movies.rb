@@ -1,4 +1,5 @@
 require_relative 'commands'
+require_relative 'movie_commands'
 
 pages = [
   # { region: 'US', year: 2018, link: 'https://en.wikipedia.org/wiki/List_of_American_films_of_2018'},
@@ -12,9 +13,9 @@ pages = [
 movies = []
 days = {}
 
-# pages.each do |pg|
-#   movies += find_movies_on_page(pg)
-# end
+pages.each do |pg|
+  movies += find_movies_on_page(pg)
+end
 
 # puts 'getting the page views'
 
