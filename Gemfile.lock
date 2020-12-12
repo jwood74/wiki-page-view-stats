@@ -6,6 +6,7 @@ GEM
     mini_portile2 (2.4.0)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    rake (13.0.1)
     uri (0.10.0)
 
 PLATFORMS
@@ -15,6 +16,7 @@ DEPENDENCIES
   csv
   json
   nokogiri
+  rake
   uri
 
 BUNDLED WITH
