@@ -113,6 +113,7 @@ The result - https://public.flourish.studio/visualisation/4634058/
 
 1. Create some tests. I'm pretty sure I have configured GitHub to run tests with each push, but I'm yet to do proper TDD.
 2. Error Handling. Never been great at this, so should take the opportunity to both practice and start some new habits.
+3. Different Aggregations. The aggregation is currently set in one of the methods. Would be better to have some input into what is done.
 
 ## Contributions
 
