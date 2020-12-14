@@ -112,7 +112,7 @@ def export_page_views(pages, folder)
                else
                  0
                end
-        tmp << val.last(14).sum
+        tmp << val.last(30).sum
       end
       csv << tmp
     end
