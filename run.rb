@@ -1,35 +1,31 @@
 require_relative 'commands'
 
-if ARGV[0]
-  folder = ARGV[0]
-else
-  puts 'which folder?'
-  folder = gets.chomp
-end
+folder = get_input('Which folder?', ARGV[0])
 
-puts 'Getting list of pages from '
 input = CSV.read("#{folder}/input.csv", headers: true)
 
-pages = get_page_names(input)
+puts 'Fixing up the links'
+fix_links(input)
 
-dump_pages_to_csv(pages, folder)
+create_json_for_pages(input, folder) unless File.exist?("#{folder}/#{folder}.json")
 
-if ARGV[1]
-  from = ARGV[1]
-else
-  puts 'from when?'
-  from = gets.chomp
-end
+pages = load_json(folder)
 
-if ARGV[2]
-  to = ARGV[2]
-else
-  puts 'to when?'
-  to = gets.chomp
-end
+puts 'Adding any new people'
+add_new_people_to_json(pages, input)
 
-page_views = get_view_data(pages, from, to)
+update_json(pages, folder)
 
-dump_page_views_to_csv(page_views, folder)
+from = get_input('From which date? yyyymmdd', ARGV[1], 10)
+to = get_input('To which date? yyyymmdd', ARGV[2], 10)
 
-reformat_page_views(page_views, folder, 'cumulative')
+puts 'Getting any new view data'
+get_view_data(pages, from, to)
+
+puts 'Updating the date list'
+add_new_dates(pages)
+
+update_json(pages, folder)
+
+puts 'Exporting the views'
+export_page_views(pages, folder)
