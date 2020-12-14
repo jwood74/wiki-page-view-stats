@@ -73,7 +73,7 @@ I quickly found [a page](https://en.wikipedia.org/wiki/British_royal_family) wit
 
 Given I only copied the links to each page, and not the page title, I needed to retreive the name for each page. I wrote some code to visit each page, and retreive the page title. This also meant I had generic code to use next time I did the exact same thing.
 
-A little bit of looping and the aid of nokogiri, and I had the page title for each.
+A little bit of [looping](https://github.com/jwood74/wiki-page-view-stats/blob/4059924692d5439e7df3d8d0682d3749b1e0a410/commands.rb#L123) and the aid of nokogiri, and I had the page title for each.
 
 3. Restructure!
 
@@ -85,11 +85,11 @@ This was a signficant re-write, as I made it as generic as possible. The program
 
 4. Get the view stats for each page from Wiki API
 
-Using the same snippet of code from my Movies attempt, I loop through each page, and save the daily views to my new JSON file.
+Using the same snippet of code from my Movies attempt, I loop through each page, and save the [daily views](https://github.com/jwood74/wiki-page-view-stats/blob/4059924692d5439e7df3d8d0682d3749b1e0a410/commands.rb#L22) to my new JSON file.
 
 5. Format the results for Flourish Bar Race Chart
 
-I was again able to use snippets from my Movies attempt, but rewrote it for my new generic JSON format.
+I was again able to use snippets from my Movies attempt, but [rewrote it](https://github.com/jwood74/wiki-page-view-stats/blob/4059924692d5439e7df3d8d0682d3749b1e0a410/commands.rb#L103) for my new generic JSON format.
 
 Because I was now saving and loading my progress to a JSON file, I can instantly skip to this step, if none of the previous steps in my code have noticed a change (no new pages added, no additional dates required).
 
