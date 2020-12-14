@@ -84,7 +84,7 @@ def get_view_data(pages, from, to)
 end
 
 def create_json_for_pages(pages, folder)
-  tmp = { 'fields' => ['title'] + pages.headers - ['title', 'link'], 'pages' => {} }
+  tmp = { 'fields' => ['title'] + (pages.headers - ['title', 'link']), 'pages' => {} }
   pages.each { |g| tmp['pages'][g['link']] = g.to_hash }
   File.open("#{folder}/#{folder}.json", 'w') { |f| f << tmp.to_json }
 end
