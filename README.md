@@ -8,6 +8,7 @@ It then formats this into a wide CSV for use in a bar chart race visulisation.
 
 - [Movies](https://public.flourish.studio/visualisation/4610425/)
 - [The Royal Family](https://public.flourish.studio/visualisation/4634058/)
+- [Video Games in 2020](https://public.flourish.studio/visualisation/4660335/)
 
 ## Backstory
 
@@ -98,6 +99,32 @@ Finding the magic aggregation number was again a process of trial and error. I s
 14 is where I have landed, i.e Each day, it shows the number of people who viewed the page in the previous 14 days. This number proved a nice balance between nothing moving haphazardly, but still moving as current issues affected viewership.
 
 The result - https://public.flourish.studio/visualisation/4634058/
+
+## Video Games
+
+Video games of 2020 was another quite interesting visualisation. Again, it becomes very easy to see when certain games were released, or major announcements made.
+
+With all the restructuring from the Royal Family process, this one was super easy. It did require a bit of scraping.
+
+I decided to highlight Cyberpunk on the graph, as I felt like it gave something to focus on with the many movements. Given its strong interest throughout the year, it proved to be a good idea.
+
+### Process
+
+1. Find a list of games released in 2020
+
+Thankfully, and predictably, there was [a page](https://en.wikipedia.org/wiki/2020_in_video_games) of all the video games released this year. Also thankfully, the tables containing the games were quite reliable formatted which made scraping a breeze.
+
+I've attempted to write a snippet to scrape a generic page and save out a list of items. I fear it may not indeed work in practice. But I will need to test it on more pages to either refine, or give up.
+
+The new code is executed with `ruby scrape_page.rb`. The program will ask you for a project name, and website.
+
+It will then ask for the XPath of items. I will endeavour to detail some better instructions, but in the mean time, [here's a tutorial](https://www.w3schools.com/xml/xpath_intro.asp) from w3.
+
+2. The rest
+
+Everthing else is exactly the same as the Royal Family process. Running it again on a fresh dataset helped me find two small bugs. But after fixing those, it spat out exactly what I was after.
+
+The result - https://public.flourish.studio/visualisation/4660335/
 
 ## Setup
 

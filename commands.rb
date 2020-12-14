@@ -131,5 +131,15 @@ def add_new_dates(pages)
   pages['dates'] = [] unless pages['dates']
   pages['pages'].values.each do |v|
     pages['dates'] |= v['views'].keys
+def scrape_page_for_items(folder, site, item_code)
+  page = nokogiri_from_url(site)
+
+  items = page.xpath(item_code)
+
+  CSV.open("#{folder}/input.csv","w") do |c|
+    c << ['link','title']
+    items.each do |i|
+      c << [i['href'],i.text.strip]
+    end
   end
 end
