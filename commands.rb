@@ -78,8 +78,6 @@ def get_view_data(pages, from, to)
     pages['pages'][pg]['from'] = pages['pages'][pg]['views'].keys.min
     pages['pages'][pg]['to'] = pages['pages'][pg]['views'].keys.max
   end
-  pages['from'] = pages['pages'].values[0]['views'].keys.min
-  pages['to'] = pages['pages'].values[0]['views'].keys.max
   pages
 end
 
@@ -129,9 +127,20 @@ def add_new_people_to_json(pages, input)
 end
 
 def add_new_dates(pages)
+  mindate = "#{Float::INFINITY}"
+  maxdate = "0"
   pages['dates'] = [] unless pages['dates']
   pages['pages'].values.each do |v|
+    next unless v['views'].keys.count.positive?
+
     pages['dates'] |= v['views'].keys
+    mindate = v['views'].keys.min if mindate > v['views'].keys.min
+    maxdate = v['views'].keys.max if maxdate < v['views'].keys.max
+  end
+  pages['from'] = mindate
+  pages['to'] = maxdate
+end
+
 def scrape_page_for_items(folder, site, item_code)
   page = nokogiri_from_url(site)
 
