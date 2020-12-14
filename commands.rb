@@ -50,6 +50,7 @@ def get_input(text, input, len = nil)
     puts text
     result = STDIN.gets.chomp
   end
+  return result if result == 'skip'
   return result.to_s.ljust(len, '0') if len
 
   result
